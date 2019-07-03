@@ -24,10 +24,13 @@ public class UserController {
         }
     }
 
-    @GetMapping(value = "/user/active")
-    public String active(@RequestParam(value = "code") String code) {
-        System.out.println(code);
-        return "Active Success";
+    @GetMapping(value = "/user/activate")
+    public String activate(@RequestParam(value = "code") String code) {
+        if (userService.activate(code)) {
+            return "Activate Success";
+        } else {
+            return "Activate Fail";
+        }
     }
 
 }

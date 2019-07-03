@@ -2,6 +2,7 @@ package com.example.mail.service.impl;
 
 import com.example.mail.dao.UserDao;
 import com.example.mail.entity.User;
+import com.example.mail.entity.UserExample;
 import com.example.mail.service.UserService;
 import com.example.mail.util.MailUtil;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean active(String code) {
-        return false;
+    public boolean activate(String code) {
+        // 更新state，激活用户
+        User user = new User();
+        user.setState(1);
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andCodeEqualTo(code);
+        return userDao.updateByExampleSelective(user, userExample) > 0;
     }
 }

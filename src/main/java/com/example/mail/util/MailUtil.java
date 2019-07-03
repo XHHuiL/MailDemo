@@ -54,7 +54,7 @@ public class MailUtil implements Runnable {
                             "<body>" +
                             "<h1>这是一封激活邮件,激活请点击以下链接</h1>" +
                             "<h3>" +
-                            "<a target='_blank' href='http://localhost/user/active?code=" + code + "'>http://localhost/user/active?code=" + code + "</a>" +
+                            "<a target='_blank' href='http://localhost/user/activate?code=" + code + "'>http://localhost/user/activate?code=" + code + "</a>" +
                             "</h3>" +
                             "</body>" +
                             "</html>";
